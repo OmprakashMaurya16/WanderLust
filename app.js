@@ -4,6 +4,7 @@ const path = require("path");
 const methodOverride = require("method-override");
 const Listing = require("./models/listing.js");
 const { redirect } = require("express/lib/response.js");
+const ejs_mate = require("ejs-mate");
 
 const app = express();
 const PORT = 8900;
@@ -11,10 +12,11 @@ const MONGO_URL = "mongodb://localhost:27017/WanderLust";
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "/public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.json());
+app.engine("ejs", ejs_mate);
 
 main()
   .then(() => {

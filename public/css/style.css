@@ -1,0 +1,49 @@
+.navbar {
+  background-color: #f9f9f9;
+  height: 5rem;
+}
+
+.fa-compass {
+  color: #fe424d;
+  font-size: 3rem;
+}
+
+.nav-link {
+  color: #101010 !important;
+  font-size: 1.3rem !important;
+}
+
+/* footer */
+.footer_info {
+  height: 8rem;
+  background-color: #ebebeb;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer_info_social,
+.footer_info_links,
+.footer_info_brand {
+  font-size: 1.3rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer_info_links a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #101010;
+}
+
+.footer_info_links a:hover {
+  text-decoration: underline;
+}
+
+.footer_info_social i {
+  margin-right: 0.8rem;
+}
