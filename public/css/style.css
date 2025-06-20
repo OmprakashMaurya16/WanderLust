@@ -101,4 +101,27 @@ body {
   width: 10rem !important;
   height: 2rem !important;
   color: white !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1rem !important;
+  border: none !important;
+}
+
+.edit {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.edit-btn {
+  width: 10rem !important;
+  height: 2rem !important;
+  color: white !important;
+  background-color: #101010 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1rem !important;
+  border: none !important;
 }
