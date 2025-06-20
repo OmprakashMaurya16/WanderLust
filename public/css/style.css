@@ -125,3 +125,16 @@ body {
   padding: 1rem !important;
   border: none !important;
 }
+
+/* Show  */
+.show_img {
+  height: 20rem;
+}
+
+.card-footer {
+  background-color: white !important;
+}
+
+.card-footer a {
+  margin-right: 1rem !important;
+}
