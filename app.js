@@ -8,7 +8,8 @@ const ejs_mate = require("ejs-mate");
 
 const app = express();
 const PORT = 8900;
-const MONGO_URL = "mongodb://localhost:27017/WanderLust";
+const MONGO_URL =
+  "mongodb+srv://omprakashmaurya1604:Maurya2005@wanderlust.dw8uq0b.mongodb.net/WanderLust";
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
