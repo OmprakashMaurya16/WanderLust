@@ -1,9 +1,15 @@
-<% layout("/layouts/boilerplate.ejs") %>
+<% layout("layouts/boilerplate") %>
+
 <body>
   <h3 class="edit">Edit your listing</h3>
   <div class="row">
     <div class="col-8 offset-2">
-      <form action="/listing/<%= listing._id %>?_method=PUT" method="POST">
+      <form
+        action="/listing/<%= listing._id %>?_method=PUT"
+        method="POST"
+        class="needs-validation"
+        novalidate
+      >
         <div class="mb-3">
           <label for="title" class="form-label">Title:</label>
           <input
@@ -11,14 +17,17 @@
             name="listing[title]"
             value="<%= listing.title %>"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback">Title looks good</div>
         </div>
 
         <div class="mb-3">
           <label for="description" class="form-label">Description:</label>
-          <textarea name="listing[description]" class="form-control">
- <%= listing.description %></textarea
-          >
+          <textarea name="listing[description]" class="form-control" required>
+<%= listing.description %>
+          </textarea>
+          <div class="invalid-feedback">write a short Description</div>
         </div>
 
         <div class="mb-3">
@@ -28,7 +37,9 @@
             name="listing[image]"
             value="<%= listing.image %>"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback">Image URL/Link must be valid!</div>
         </div>
 
         <div class="row">
@@ -39,7 +50,9 @@
               name="listing[price]"
               value="<%= listing.price %>"
               class="form-control"
+              required
             />
+            <div class="invalid-feedback">Price must be valid!</div>
           </div>
 
           <div class="mb-3 col-md-8">
@@ -49,7 +62,9 @@
               name="listing[country]"
               value="<%= listing.country %>"
               class="form-control"
+              required
             />
+            <div class="invalid-feedback">Country must be valid!</div>
           </div>
         </div>
 
@@ -60,7 +75,9 @@
             name="listing[location]"
             value="<%= listing.location %>"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback">Location must be valid</div>
         </div>
 
         <button class="btn btn-danger edit-btn">Edit</button>

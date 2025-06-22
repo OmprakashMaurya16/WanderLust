@@ -12,10 +12,6 @@ const listingSchema = new mongoose.Schema({
     type: String,
     default:
       "https://unsplash.com/photos/3d-render-of-luxury-hotel-lobby-and-reception-_bb0_-t-hEo",
-    set: (v) =>
-      v === ""
-        ? "https://unsplash.com/photos/3d-render-of-luxury-hotel-lobby-and-reception-_bb0_-t-hEo"
-        : v,
   },
   price: {
     type: Number,
