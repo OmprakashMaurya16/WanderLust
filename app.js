@@ -7,6 +7,9 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const listingRoute = require("./routes/listing.js");
 const reviewRoute = require("./routes/review.js");
+const session = require("express-session");
+const { date } = require("joi");
+const flash = require("express-flash");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -24,12 +27,31 @@ async function main() {
   await mongoose.connect(MONGO_URL);
 }
 
+const sessionOption = {
+  secret: "mysupersecretcode",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    httpOnly: true,
+  },
+};
+
 main()
   .then(() => console.log("DB Connected Successfully"))
   .catch((err) => console.log(`Database Connection Error: ${err}`));
 
 app.get("/", (req, res) => {
   res.send("Welcome to WanderLust");
+});
+
+app.use(session(sessionOption));
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  next();
 });
 
 app.use("/listing", listingRoute);
