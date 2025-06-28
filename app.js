@@ -10,6 +10,9 @@ const reviewRoute = require("./routes/review.js");
 const session = require("express-session");
 const { date } = require("joi");
 const flash = require("express-flash");
+const LocalStrategy = require("passport-local");
+const passport = require("passport");
+const User = require("./models/user.js");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -49,8 +52,16 @@ app.get("/", (req, res) => {
 app.use(session(sessionOption));
 app.use(flash());
 
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
   next();
 });
 
