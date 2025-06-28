@@ -1,0 +1,48 @@
+<% layout("layouts/boilerplate") %>
+
+<body>
+  <div
+    class="container d-flex justify-content-center align-items-center mt-5 mb-5"
+  >
+    <div
+      class="border rounded p-4 bg-light shadow"
+      style="width: 100%; max-width: 400px"
+    >
+      <h3 class="text-center">Welcome Back!</h3>
+      <p class="text-center text-muted text-nowrap">
+        Log in to continue your journey with WanderLust.
+      </p>
+
+      <form action="/login" method="POST" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            required
+          />
+          <div class="invalid-feedback">Username is required.</div>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            required
+            minlength="6"
+          />
+          <div class="invalid-feedback">
+            Password must be at least 6 characters.
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Log In</button>
+      </form>
+    </div>
+  </div>
+</body>

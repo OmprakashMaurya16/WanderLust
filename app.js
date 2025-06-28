@@ -7,6 +7,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const listingRoute = require("./routes/listing.js");
 const reviewRoute = require("./routes/review.js");
+const userRoute = require("./routes/users.js");
 const session = require("express-session");
 const { date } = require("joi");
 const flash = require("express-flash");
@@ -62,11 +63,13 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
+  res.locals.currUser = req.user;
   next();
 });
 
 app.use("/listing", listingRoute);
 app.use("/listing/:id/review", reviewRoute);
+app.use("/", userRoute);
 
 app.use((req, res, next) => {
   next(new ExpressError(404, "Page not found!"));
