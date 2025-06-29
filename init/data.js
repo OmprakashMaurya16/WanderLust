@@ -67,7 +67,7 @@ const sampleListings = [
     price: 900,
     location: "Lake Tahoe",
     country: "United States",
-    owner: "686013777fe063e86b9f2877",
+    owner: "686012e37fe063e86b9f2847",
   },
   {
     title: "Luxury Penthouse with City Views",
@@ -137,7 +137,7 @@ const sampleListings = [
     price: 2200,
     location: "Boston",
     country: "United States",
-    owner: "686013777fe063e86b9f2877",
+    owner: "686013687fe063e86b9f286f",
   },
   {
     title: "Beachfront Bungalow in Bali",
@@ -208,7 +208,7 @@ const sampleListings = [
     price: 1100,
     location: "Montana",
     country: "United States",
-    owner: "686013777fe063e86b9f2877",
+    owner: "686013687fe063e86b9f286f",
   },
   {
     title: "Beachfront Villa in Greece",
@@ -278,7 +278,7 @@ const sampleListings = [
     price: 4000,
     location: "Aspen",
     country: "United States",
-    owner: "686013777fe063e86b9f2877",
+    owner: "686012e37fe063e86b9f2847",
   },
   {
     title: "Secluded Beach House in Costa Rica",
