@@ -12,13 +12,8 @@ const listingSchema = new mongoose.Schema({
     type: String,
   },
   image: {
-    type: String,
-    default:
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&auto=format",
-    set: (v) =>
-      v === ""
-        ? "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&auto=format"
-        : v,
+    url: String,
+    filename: String,
   },
   price: {
     type: Number,
