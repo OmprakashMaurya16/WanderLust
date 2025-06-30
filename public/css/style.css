@@ -11,11 +11,13 @@ body {
 
 .navbar {
   background-color: #f9f9f9;
-  height: 5rem;
+  padding: 0.5rem 1rem;
 }
 
-.navbar-nav .explore {
-  font-size: 1.2rem !important;
+.navbar-toggler {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .fa-compass {
@@ -23,9 +25,59 @@ body {
   font-size: 2rem;
 }
 
-.nav-link {
+.explore-link {
+  font-size: 1rem;
+  font-weight: 500;
   color: #101010 !important;
-  font-size: 1rem !important;
+  margin-left: 1rem;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.search-form {
+  display: flex;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 30px 0 0 30px;
+  outline: none;
+}
+
+.search-btn {
+  background-color: #fe424d;
+  color: white;
+  border: none;
+  padding: 0 1rem;
+  border-radius: 0 30px 30px 0;
+}
+
+.navbar-collapse {
+  background-color: #f9f9f9;
+}
+
+@media (max-width: 768px) {
+  .search-container {
+    margin: 0.5rem 0;
+  }
+
+  .explore-link {
+    display: none;
+  }
 }
 
 /* Footer */
