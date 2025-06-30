@@ -33,13 +33,31 @@
 
         <div>
           Original Image URL: <br />
-          <img src="<%= originalImage %>" style="width: 250px; height: 150px" />
+          <img
+            src="<%= listing.image.url %>"
+            style="width: 250px; height: 150px"
+          />
         </div>
 
         <div class="mb-3">
           <label for="image" class="form-label">Upload New Image:</label>
-          <input type="file" name="listing[image]" class="form-control" />
+          <input type="file" name="image" class="form-control" />
           <div class="invalid-feedback">Image must be type of jpg,png,jpeg</div>
+        </div>
+
+        <div class="mb-3">
+          <select name="listing[category]" class="form-select" required>
+            <option value=""><%= listing.category %></option>
+            <option value="Beach">Beach</option>
+            <option value="Mountain">Mountain</option>
+            <option value="City">City</option>
+            <option value="Cabin">Cabin</option>
+            <option value="Camping">Camping</option>
+            <option value="Heritage">Heritage</option>
+            <option value="Lake">Lake</option>
+            <option value="Desert">Desert</option>
+            <option value="Pet-Friendly">Pet-Friendly</option>
+          </select>
         </div>
 
         <div class="row">

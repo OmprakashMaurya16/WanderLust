@@ -1,18 +1,18 @@
 <% layout("layouts/boilerplate") %>
 
 <body>
-  <h3 class="edit">Create New Listing</h3>
+  <h3 class="edit text-center my-4">Create New Listing</h3>
   <div class="row">
     <div class="col-8 offset-2">
       <form
         action="/listing"
         method="POST"
-        class="needs-validation"
         enctype="multipart/form-data"
+        class="needs-validation"
         novalidate
       >
         <div class="mb-3">
-          <label for="title" class="form-label">Title:</label>
+          <label class="form-label">Title:</label>
           <input
             type="text"
             name="listing[title]"
@@ -23,7 +23,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="description" class="form-label">Description:</label>
+          <label class="form-label">Description:</label>
           <textarea
             name="listing[description]"
             class="form-control"
@@ -33,24 +33,40 @@
         </div>
 
         <div class="mb-3">
-          <label for="image" class="form-label">Upload Image:</label>
-          <input
-            type="file"
-            name="listing[image]"
-            class="form-control"
-            required
-          />
+          <label class="form-label">Upload Image:</label>
+          <input type="file" name="image" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Category</label>
+          <select class="form-select" name="listing[category]" required>
+            <option value=""><Choose a category></option>
+            <option value="Beach">Beach</option>
+            <option value="Mountain">Mountain</option>
+            <option value="City">City</option>
+            <option value="Cabin">Cabin</option>
+            <option value="Camping">Camping</option>
+            <option value="Heritage">Heritage</option>
+            <option value="Lake">Lake</option>
+            <option value="Desert">Desert</option>
+            <option value="Pet-Friendly">Pet-Friendly</option>
+          </select>
         </div>
 
         <div class="row">
           <div class="mb-3 col-md-4">
-            <label for="price" class="form-label">Price:</label>
-            <input name="listing[price]" class="form-control" required />
+            <label class="form-label">Price:</label>
+            <input
+              name="listing[price]"
+              type="number"
+              class="form-control"
+              required
+            />
             <div class="invalid-feedback">Please provide a valid price</div>
           </div>
 
           <div class="mb-3 col-md-8">
-            <label for="country" class="form-label">Country:</label>
+            <label class="form-label">Country:</label>
             <input
               type="text"
               name="listing[country]"
@@ -62,7 +78,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="location" class="form-label">Location:</label>
+          <label class="form-label">Location:</label>
           <input
             type="text"
             name="listing[location]"
@@ -72,9 +88,9 @@
           <div class="invalid-feedback">Please provide a location</div>
         </div>
 
-        <button class="btn btn-success">Create Listing</button>
-        <br /><br />
+        <button type="submit" class="btn btn-success">Create Listing</button>
       </form>
+      <br />
     </div>
   </div>
 </body>
