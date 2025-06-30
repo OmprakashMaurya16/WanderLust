@@ -196,11 +196,42 @@ body {
 }
 
 .tax-switch {
-  border: 1px solid black;
-  border-radius: 20px;
+  border: 1px solid grey;
+  border-radius: 25px;
   height: 3rem;
   display: flex;
   align-items: center;
   padding: 1rem;
+  background-color: ghostwhite;
+}
+
+.search-input {
+  border-radius: 25px !important;
+  padding: 0.5rem 1rem 0.5rem 1rem !important;
+}
+
+.search-btn {
+  background-color: #f94b57 !important;
+  color: white !important;
+  border-radius: 25px !important;
+  padding: 0.5rem 1rem 0.5rem 1rem !important;
+  white-space: nowrap;
+}
+
+.search-btn:hover {
+  background-color: #ef2e2e !important;
+  color: white !important;
+}
+
+.search-btn i {
+  display: inline;
+  margin-right: 10px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
   justify-content: center;
+  width: 70%;
+  margin-top: 1rem;
 }

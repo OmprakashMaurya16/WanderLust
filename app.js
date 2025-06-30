@@ -9,12 +9,14 @@ const listingRoute = require("./routes/listing.js");
 const reviewRoute = require("./routes/review.js");
 const userRoute = require("./routes/users.js");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const ExpressError = require("./utils/ExpressError.js");
 const { date } = require("joi");
 const flash = require("express-flash");
 const LocalStrategy = require("passport-local");
 const passport = require("passport");
 const User = require("./models/user.js");
+const { error } = require("console");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -32,7 +34,20 @@ async function main() {
   await mongoose.connect(MONGO_URL);
 }
 
+const store = MongoStore.create({
+  mongoUrl: MONGO_URL,
+  crypto: {
+    secret: "mysupersecretcode",
+  },
+  touchAfter: 24 * 3600,
+});
+
+store.on("error", () => {
+  console.log(error);
+});
+
 const sessionOption = {
+  store,
   secret: "mysupersecretcode",
   resave: false,
   saveUninitialized: true,
@@ -49,6 +64,12 @@ main()
 
 app.use(session(sessionOption));
 app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.category = req.query.category || null;
+  res.locals.q = req.query.q || "";
+  next();
+});
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -74,7 +95,6 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   const { statusCode = 500, message = "Something went wrong!" } = err;
-  console.log(err);
   res.status(statusCode).render("error.ejs", { message });
 });
 

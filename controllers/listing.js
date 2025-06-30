@@ -1,17 +1,30 @@
 const Listing = require("../models/listing.js");
 const ExpressError = require("../utils/ExpressError.js");
 
-module.exports.index = async (req, res) => {
-  const { category } = req.query;
-  let allListing;
+module.exports.index = async (req, res, next) => {
+  try {
+    const { category, q } = req.query;
+    let query = {};
 
-  if (category) {
-    allListing = await Listing.find({ category });
-  } else {
-    allListing = await Listing.find({});
+    if (category) {
+      query.category = category;
+    }
+
+    if (q) {
+      const regex = new RegExp(q, "i");
+      query.$or = [
+        { title: regex },
+        { description: regex },
+        { location: regex },
+        { country: regex },
+      ];
+    }
+
+    const allListing = await Listing.find(query);
+    res.render("listings/index", { allListing, category, q });
+  } catch (err) {
+    next(err);
   }
-
-  res.render("listings/index", { allListing, category });
 };
 
 module.exports.renderNewForm = (req, res) => {
