@@ -2,8 +2,16 @@ const Listing = require("../models/listing.js");
 const ExpressError = require("../utils/ExpressError.js");
 
 module.exports.index = async (req, res) => {
-  const allListing = await Listing.find({});
-  res.render("listings/index", { allListing });
+  const { category } = req.query;
+  let allListing;
+
+  if (category) {
+    allListing = await Listing.find({ category });
+  } else {
+    allListing = await Listing.find({});
+  }
+
+  res.render("listings/index", { allListing, category });
 };
 
 module.exports.renderNewForm = (req, res) => {
@@ -39,12 +47,24 @@ module.exports.renderEditForm = async (req, res) => {
   if (!listing) {
     throw new ExpressError(404, "Listing not found");
   }
-  res.render("listings/edit", { listing });
+
+  let originalImage = listing.image.url;
+  originalImage = originalImage.replace(
+    "/upload",
+    "/upload/w_300,h_200,blur:300"
+  );
+  res.render("listings/edit", { listing, originalImage });
 };
 
 module.exports.updateListing = async (req, res) => {
   const { id } = req.params;
-  await Listing.findByIdAndUpdate(id, req.body.listing);
+  let listing = await Listing.findByIdAndUpdate(id, req.body.listing);
+  if (typeof req.file !== "undefined") {
+    let url = req.file.path;
+    let filename = req.file.filename;
+    listing.image = { url, filename };
+    await listing.save();
+  }
   req.flash("success", "Listing Updated!");
   res.redirect(`/listing/${id}`);
 };
@@ -54,4 +74,17 @@ module.exports.deleteListing = async (req, res) => {
   await Listing.findByIdAndDelete(id);
   req.flash("success", "Listing Deleted!");
   res.redirect("/listing");
+};
+
+module.exports.category = async (req, res) => {
+  const { category } = req.query;
+  let listings;
+
+  if (category) {
+    listings = await Listing.find({ category });
+  } else {
+    listings = await Listing.find({});
+  }
+
+  res.render("listings/index", { listings, category });
 };

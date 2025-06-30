@@ -1,0 +1,112 @@
+<div class="filter-wrapper">
+  <div class="filters">
+    <a
+      href="/listing?category=Beach"
+      class="filter"
+      style="text-decoration: none; color: black"
+    >
+      <i class="fa-solid fa-umbrella-beach"></i>
+      <p>Beach</p>
+    </a>
+
+    <a
+      href="/listing?category=Mountain"
+      class="filter"
+      style="text-decoration: none; color: black"
+    >
+      <i class="fa-solid fa-mountain-sun"></i>
+      <p>Mountain</p>
+    </a>
+
+    <a
+      href="/listing?category=City"
+      class="filter"
+      style="text-decoration: none; color: black"
+    >
+      <i class="fa-solid fa-city"></i>
+      <p>City</p>
+    </a>
+
+    <a
+      href="/listing?category=Cabin"
+      class="filter"
+      style="text-decoration: none; color: black"
+    >
+      <i class="fa-solid fa-house-chimney"></i>
+      <p>Cabin</p>
+    </a>
+
+    <a
+      href="/listing?category=Camping"
+      class="filter"
+      style="text-decoration: none; color: black"
+    >
+      <i class="fa-solid fa-campground"></i>
+      <p>Camping</p>
+    </a>
+
+    <a
+      href="/listing?category=Heritage"
+      class="filter"
+      style="text-decoration: none; color: black"
+    >
+      <i class="fa-solid fa-landmark"></i>
+      <p>Heritage</p>
+    </a>
+
+    <a
+      href="/listing?category=Lake"
+      class="filter"
+      style="text-decoration: none; color: black"
+    >
+      <i class="fa-solid fa-water"></i>
+      <p>Lake</p>
+    </a>
+
+    <a
+      href="/listing?category=Desert"
+      class="filter"
+      style="text-decoration: none; color: black"
+    >
+      <i class="fa-solid fa-sun"></i>
+      <p>Desert</p>
+    </a>
+
+    <a
+      href="/listing?category=Pet-Friendly"
+      class="filter"
+      style="text-decoration: none; color: black"
+    >
+      <i class="fa-solid fa-dog"></i>
+      <p>Pet-Friendly</p>
+    </a>
+    <div class="tax-switch">
+      <div class="form-check-reverse form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="switchCheckDefault"
+        />
+        <label class="form-check-label" for="switchCheckDefault"
+          >Display Total After Taxes</label
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let taxSwitch = document.getElementById("switchCheckDefault");
+  if (taxSwitch) {
+    taxSwitch.addEventListener("click", () => {
+      let taxInfo = document.getElementsByClassName("tax-info");
+      for (let info of taxInfo) {
+        info.style.display =
+          info.style.display === "none" || !info.style.display
+            ? "inline"
+            : "none";
+      }
+    });
+  }
+</script>

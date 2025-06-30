@@ -26,7 +26,22 @@ const listingSchema = new mongoose.Schema({
   country: {
     type: String,
   },
-
+  category: {
+    type: String,
+    enum: [
+      "Trending",
+      "Beach",
+      "Mountain",
+      "City",
+      "Cabin",
+      "Camping",
+      "Heritage",
+      "Lake",
+      "Desert",
+      "Pet-Friendly",
+    ],
+    required: true,
+  },
   reviews: [
     {
       type: mongoose.Schema.Types.ObjectId,

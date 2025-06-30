@@ -9,6 +9,7 @@ const listingRoute = require("./routes/listing.js");
 const reviewRoute = require("./routes/review.js");
 const userRoute = require("./routes/users.js");
 const session = require("express-session");
+const ExpressError = require("./utils/ExpressError.js");
 const { date } = require("joi");
 const flash = require("express-flash");
 const LocalStrategy = require("passport-local");
@@ -46,10 +47,6 @@ main()
   .then(() => console.log("DB Connected Successfully"))
   .catch((err) => console.log(`Database Connection Error: ${err}`));
 
-app.get("/", (req, res) => {
-  res.send("Welcome to WanderLust");
-});
-
 app.use(session(sessionOption));
 app.use(flash());
 
@@ -77,6 +74,7 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   const { statusCode = 500, message = "Something went wrong!" } = err;
+  console.log(err);
   res.status(statusCode).render("error.ejs", { message });
 });
 

@@ -14,9 +14,13 @@ body {
   height: 5rem;
 }
 
+.navbar-nav .explore {
+  font-size: 1.2rem !important;
+}
+
 .fa-compass {
   color: #fe424d;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .nav-link {
@@ -137,4 +141,66 @@ body {
 
 .card-footer a {
   margin-right: 1rem !important;
+}
+
+.filter-wrapper {
+  max-width: 1500px;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  gap: 1rem;
+  border-bottom: 1px solid #ddd;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filter {
+  flex: 0 0 auto;
+  width: 90px;
+  margin-top: 1rem;
+  text-align: center;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.filter:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.filter i {
+  font-size: 1.2rem;
+  display: block;
+  color: #333;
+}
+
+.filter p {
+  font-size: 13px;
+  margin-top: 2px;
+  color: #333;
+}
+
+.filters::-webkit-scrollbar {
+  height: 5px;
+}
+
+.filters::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.tax-info {
+  display: none;
+}
+
+.tax-switch {
+  border: 1px solid black;
+  border-radius: 20px;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  justify-content: center;
 }
